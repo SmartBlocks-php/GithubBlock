@@ -6,11 +6,11 @@ define([
 ], function ($, _, Backbone,Github) {
 
     var private_methods = {
-        getRepo: function (token, user, repository) {
+        getRepo: function (token, user, repo) {
             var github = new Github({
                 token: token
             });
-            return github.getRepo(user, repository);
+            return github.getRepo(user, repo);
         }
     }
 
@@ -19,6 +19,7 @@ define([
 
         },
         getRepo: function (user, repo, callback) {
+
             if (SmartBlocks.Blocks.GithubBlock.Config.user_token) {
                 var repos = private_methods.getRepo(SmartBlocks.Blocks.GithubBlock.Config.user_token, user, repo);
                 callback(repos);
